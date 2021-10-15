@@ -66,7 +66,7 @@ filtered <-
   filtered[filtered$RT > (mean(filtered$RT) - 2.5*sd(filtered$RT)) & 
              filtered$RT < (mean(filtered$RT) + 2.5*sd(filtered$RT)), ]
 
-# Визуализация полученных данных
+# Визуализация полученных данных.
 filtered %>% 
   ggplot(aes(freq, log_RT, color = Type))+
   geom_point()+
@@ -104,6 +104,7 @@ library(ggeffects)
 #Вывод с точностью до одного знака после запятой (для визуализации осмысленности)
 scaleFUN <- function(x) sprintf("%.1f", x)
 
+#Визуализация. Не удивляйтесь, если графики будут выглядеть по-другому, в тексте они попарно масштабировались, чтобы оси были одинаковыми.
 ggpredict(m1_RT, terms = c("log_freq", "Type")) %>% 
   plot()
 
@@ -139,6 +140,7 @@ summary(m2_Correct)
 #Вывод с точностью до трех знаков после запятой (для визуализации осмысленности)
 scaleFUN <- function(x) sprintf("%.3f", x)
 
+#Визуализация. Не удивляйтесь, если графики будут выглядеть по-другому, в тексте они попарно масштабировались, чтобы оси были одинаковыми.
 ggpredict(m2_RT, terms = c("log_freq", "Type")) %>% 
   plot()
 
